@@ -1,3 +1,37 @@
+> **本项目是 [Compositor](https://github.com/robbietilton/Compositor)（MIT 许可）的修改版**，
+> 在其中文汉化分支的基础上补齐了 **Photoshop 级笔刷引擎**。
+
+## 相比上游增加了什么
+
+- **ABR 导入**：完整的 Action Descriptor 解析器，支持采样笔尖（位图）与计算笔尖（圆形/椭圆），
+  读取 PS 笔刷的名称、直径、间距、角度、圆度、硬度，以及 Shape Dynamics / Transfer / Scatter 参数
+- **数位板压感**：压力驱动的大小、不透明度、流量
+- **动态通道**：大小/角度/圆度/不透明度/流量 **抖动**，最小直径/圆度/不透明度/流量，倾斜缩放，**渐隐**（含步数）
+- **散布 Scatter**：单点可落多笔迹，两侧或两轴散开，带数量抖动
+- **画笔设置面板**：对齐 Photoshop 的 13 个分区（已实现 4 个：笔尖形状 / 形状动态 / 传递 / 散布，其余灰显）
+- **右侧面板栏**：笔刷库（分组 · 瀑布缩略图 · 拖拽重排 · 增删改 · 重命名）+ 取色器 + 图层面板，高度宽度可拖拽调整
+- **画笔与橡皮各自记忆笔刷**，两套设置**跨启动保留**
+- **新建文档**默认「白底不透明背景 + 透明图层」
+- **中文界面**
+
+## 构建
+
+需要 macOS 与 Xcode：
+
+```bash
+xcodebuild -project Compositor.xcodeproj -scheme Compositor -configuration Debug build
+```
+
+或直接用 Xcode 打开 `Compositor.xcodeproj` 运行。
+
+## 许可与致谢
+
+- 基于 MIT 许可的 [Compositor](https://github.com/robbietilton/Compositor)，保留其原始版权声明。
+- 中文汉化工作来自 [SA-GIMA/Compositor_CN](https://github.com/SA-GIMA/Compositor_CN)。
+- **本仓库不包含、也不分发任何 Adobe 的笔刷素材（`.abr`）**。
+
+---
+
 # Compositor 中文汉化版
 
 Adobe Photoshop 太贵，而 GIMP 之类工具又不够顺手，很难保持工作流。所以做了 Compositor。
